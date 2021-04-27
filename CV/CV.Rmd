@@ -1,0 +1,76 @@
+---
+name: Julie
+surname: White
+position: "IRTA Postdoctoral Fellow"
+address: "National Institute of Environmental Health Sciences"
+email: "julie.white@nih.gov"
+aboutme: "Trying to make things work" 
+orcid: 0000-0002-2235-4817
+github: juliedwhite
+linkedin: julie-white-05888b133
+date: "`r format(Sys.time(), '%B %Y')`"
+headcolor: 414141 # use black color
+output: vitae::awesomecv
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(vitae)
+library(tibble)
+library(glue)
+library(scholar)
+library(dplyr)
+library(stringr)
+```
+
+# Research Interests 
+* Genetic and environmental contributors to human phenotypic variation and health
+* Epigenetic modifications in response to environmental exposures
+* Gene x environment interactions
+* Bioinformatics, statistical genetics, and data visualization 
+
+# Education
+
+```{r}
+tribble(~ Degree, ~ Start, ~ End, ~ Institution, ~ Where,
+        "B.S. in Genetics", "2010", "2014", "Clemson University", "Clemson, SC",
+  "M.A. in Anthropology", "2014", "2016", "Penn State University", "State College, PA",
+  "Ph.D. in Anthropology", "2016", "2019", "Penn State University", "State College, PA") %>%
+  detailed_entries(Degree, glue("{Start}-{End}"), Institution, Where)
+```
+
+
+# Publications
+```{r}
+conference_pres <- c("Investigating the genetic intersection of orofacial clefting and normal facial variation", 
+                     "Investigations Into the Genetic Architecture of the Human Face", 
+                     "A GWAS on data-driven 3D facial phenotypes selected by matching siblings reveals 310 genetic loci",
+                     "SNPs discovered in European GWAS shape worldwide facial diversity",
+                     "Meta-analysis identifies 48 SNPs with multiple independent effects on human facial features",
+                     "Spatially-dense 3D facial heritability and genetic correlations in a heterogeneous sample",
+                     "The evolution of human facial sexual dimorphism",
+                     "Modular 3D dense surface analysis and GWAS reveal localized genetic effects on human facial morphology involving multiple novel loci",
+                     "Deflating the \"Good Genes Hypothesis\": Asymmetry may not be an honest indicator of genetic quality in humans",
+                     "Comparing narrow-band to full-spectrum based methods for measuring human skin pigmentation")
+
+
+pubs <- scholar::get_publications("vAWXwhIAAAAJ") %>% 
+  # Remove conference presentations
+  filter(!title %in% conference_pres)
+
+# Author list of Meshmonk publication is messed up
+pubs[which(str_detect(string = pubs$title, pattern = "MeshMonk") & 
+             str_detect(string = pubs$author, pattern = "\\bPC")),"author"] <- 
+  pubs[which(str_detect(string = pubs$title, pattern = "MeshMonk") & 
+             str_detect(string = pubs$author, pattern = "\\bJD")),"author"]
+
+pubs <- pubs %>%
+  filter(!str_detect(string = pubs$title, pattern = "Supplemental")) %>%
+  arrange(desc(year))
+
+pubs %>%
+  detailed_entries(with = author, what = title, when = year, where = journal, .protect=FALSE)
+# Figure how to create bib format file from this.   
+```
+
+
