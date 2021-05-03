@@ -36,6 +36,7 @@ tribble(~ Degree, ~ Start, ~ End, ~ Institution, ~ Where,
         "B.S. in Genetics", "2010", "2014", "Clemson University", "Clemson, SC",
   "M.A. in Anthropology", "2014", "2016", "Penn State University", "State College, PA",
   "Ph.D. in Anthropology", "2016", "2019", "Penn State University", "State College, PA") %>%
+  arrange(desc(End)) %>%
   detailed_entries(Degree, glue("{Start}-{End}"), Institution, Where)
 ```
 
@@ -69,7 +70,8 @@ pubs <- pubs %>%
   arrange(desc(year))
 
 pubs %>%
-  detailed_entries(with = author, what = title, when = year, where = journal, .protect=FALSE)
+  detailed_entries(with = author, what = title, when = year, where = journal, 
+                   .protect=FALSE)
 # Figure how to create bib format file from this.   
 ```
 
