@@ -1,197 +1,265 @@
 ---
-title: "Lijia Yu's resume"
-author: Lijia Yu
-date: "`r Sys.Date()`"
-output:
-  pagedown::html_resume:
-    # set it to true for a self-contained HTML page but it'll take longer to render
-    self_contained: true
-# uncomment this line to produce HTML and PDF in RStudio:
-knit: pagedown::chrome_print
+name: Han
+surname: Zhang
+position: "Postdoctoral Research Fellow"
+address: "Department of Psychology, University of Michigan"
+www: sites.lsa.umich.edu/hanzh
+email: "hanzh@umich.edu"
+#orcid: 0000-0001-6087-0428
+researchgate: Han_Zhang175
+github: HanZhang-psych
+twitter: \_HanZhang_
+headcolor: 414141 # use black color
+date: "`r format(Sys.time(), '%B %Y')`"
+output: 
+  vitae::awesomecv:
+    pandoc_args: ["--lua-filter=multiple-bibliographies.lua"] # used for creating bibliographies for multiple sections
+    keep_tex: yes
+csl: apa-cv.csl # change this if you want to use other citation styles
+bibliography_published: "Published.bib" # use separate .bib files and assign each of them a unique key: bibliography_*
+bibliography_books: "Book_chapters.bib"
+bibliography_inprogress: "In_progress.bib"
+bibliography_presentations: "Presentations.bib"
+nocite: '@*' # don't change this if you want to print out all the refs
+
 ---
 
-Aside
-================================================================================
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(vitae);library(tibble)
+```
 
-![Lijia Yu](https://avatars1.githubusercontent.com/u/895125?s=400&v=4){width=80%}
+# Research Interests
 
+Attention; distraction; mind-wandering; eye movements
 
-Contact Info {#contact}
---------------------------------------------------------------------------------
+# Education
 
-- <i class="fa fa-envelope"></i> lijia.yu@outlook.com
-- <i class="fa fa-github"></i> [github.com/yulijia](https://github.com/yulijia)
-- <i class="fa fa-phone"></i> +1 000-000-0000
-- For more information, please contact me via email.
+```{r}
+tribble(
+  ~ Degree,
+  ~ Advisor,
+  ~ Year,
+  ~ Institution,
+  ~ Where,
+  "Postdoctoral Research Fellow, Department of Psychology",
+  "Advisor: Dr. John Jonides",
+  "05/2020-present",
+  "University of Michigan",
+  "Ann Arbor, MI, USA",
+  "Doctor of Philosophy, Combined Program in Education and Psychology",
+  "Dissertation: Mind-wandering: What Can We Learn from Eye Movements?",
+  "09/2018-05/2020",
+  "University of Michigan",
+  "Ann Arbor, MI, USA",
+  "Doctor of Philosophy, Combined Program in Education and Psychology",
+  "Proquest Distinguished Dissertation Nomination",
+  "09/2018-05/2020",
+  "University of Michigan",
+  "Ann Arbor, MI, USA",
+  "Master of Science, Combined Program in Education and Psychology",
+  NA,
+  "09/2014-05/2018",
+  "University of Michigan",
+  "Ann Arbor, MI, USA",
+  "Bachelor of Science, Psychology",
+  NA,
+  "09/2010-06/2014",
+  "Beijing Normal University",
+  "Beijing, China",
+) %>%
+  detailed_entries(
+    what = Degree,
+    when = Year,
+    with = Institution,
+    where = Where,
+    why = Advisor
+  )
+```
 
+# Awards and Grants
 
-Skills {#skills}
---------------------------------------------------------------------------------
+```{r}
+tribble(
+  ~Year, ~Name, ~Institution,
+  2019, "Rackham One-Term Dissertation Fellowship ($17417)", "University of Michigan",
+  2019, "Rackham Graduate Student Research Grant ($3000)", "University of Michigan",
+  2019, "Rackham Conference Travel Grant ($1050)","University of Michigan",
+  2018, "Rackham Summer Training Award ($3700)","University of Michigan",
+  2018, "Rackham Conference Travel Grant ($800)","University of Michigan",
+  2017, "Rackham Conference Travel Grant ($800)","University of Michigan",
+  2017, "Professor & Mrs. Cho-Yee To Travel Grant ($500)","University of Michigan",
+  2015, "Professor & Mrs. Cho-Yee To Travel Grant ($500)","University of Michigan",
+  2014, "China National Scholarship ($1500)","Ministry of Education of the People's Republic of China",
+  2014, "The First Rank Academic Scholarship ($300)","Beijing Normal University",
+  2013, "The First Rank Academic Scholarship ($300)","Beijing Normal University",
+  2013, "Beijing Student Research and Entrepreneurial Action Plan ($1500)","Beijing Municipal Commission of Education",
+  2012, "Undergraduate Student Research Grant ($280)","Beijing Normal University",
+) %>% 
+  detailed_entries(
+    where = Year,
+    with = Name, 
+    what = Institution
+  ) 
+```
 
-- Experienced in statistical analysis, statistical learning models, and optimization methods.
+# Peer-reviewd Publications
 
-- Full experience with next generation sequencing data analysis.
+<!-- Notes: copy and paste the following block for any other bibliography sections with the same bibliography key matched that you assigned in YAML  -->
+\begingroup
+\setlength{\parindent}{-0.5in}
+\setlength{\leftskip}{0.5in}
 
-- Highly skilled in R, Bash, Perl, Python, LaTeX
-
-
-Disclaimer {#disclaimer}
---------------------------------------------------------------------------------
-
-This resume was made with the R package [**pagedown**](https://github.com/rstudio/pagedown).
-
-Last updated on `r Sys.Date()`.
-
-
-
-Main
-================================================================================
-
-Lijia Yu {#title}
---------------------------------------------------------------------------------
-
-### Currently searching for a PhD student position
-
-Please note that this is a *real* resume, and I'm really looking for a PhD
-student position at the moment. I made this resume because Yihui asked me
-if I'd like to test the **pagedown** package with my resume. If you are
-interested in my background and skills, please feel free to contact me.
-
-
-Education {data-icon=graduation-cap data-concise=true}
---------------------------------------------------------------------------------
-
-### Beijing University of Chemical Technology
-
-B.S. in Information and Computing Sciences
-
-Beijing, China
-
-2010
-
-Thesis: Dyadic wavelet and its application in edge detection
-
-### University of Chinese Academy of Sciences
-
-M.S. in Bioinformatics
-
-Beijing, China
-
-2014
-
-Thesis: A multi-omics study for intra-individual divergence of the distributions between mRNA isoforms in mammals
-
-
-Research Experience {data-icon=laptop}
---------------------------------------------------------------------------------
-
-### Graduate Research Assistant
-
-Beijing Institute of Genomics, Chinese Academy of Sciences
-
-Beijing, China
-
-2011 - 2014
-
-- Performed computational biology research towards understanding regulation of alternative splicing in human and mouse transcriptome.
-- Found EGFR pathway related mutations, aimed to understand the impacts of cancer mutations on EGFR signaling pathway.
-
-### Bioinformatican
-
-My Health Gene Technology Co., Ltd.
-
-Beijing, China
-
-2015 - 2016
-
-- Investigated how cancer cells spread to other parts of the body at the single cell level.
-
-### Visiting Scientist
-
-University of Alabama at Birmingham
-
-AL, USA
-
-2016 - 2018
-
-- Investigated the role of mitochondria in development of cancer.
-- Investigated the evolution of genome architecture and its role in important evolutionary events.
-- Detected thrombotic thrombocytopenic purpura related mutations in mutiple patients' blood genome.
-  
-
-Professional Experience {data-icon=suitcase}
---------------------------------------------------------------------------------
-
-### Data Scientist, intern
-
-SupStat Inc.
-
-Beijing, China
-
-2014
-
-::: concise
-- Taught R language to beginners. 
-- Wrote Shiny app demos.
-- Converted statistical tutorials from SPSS to R language.
+::: {#refs_published}
 :::
 
-### Bioinformatician
+\endgroup
+<!-- Bib-printing block ends here. -->
 
-My Health Gene Technology Co., Ltd.
 
-Beijing, China
 
-2015 - 2016
+# Work in Progress 
 
-::: concise
-- Analyzed whole-exome sequencing data. 
-- Wrote analysis pipelines of ChIP-seq, single cell DNA-seq and single cell RNA-seq.
-- Studied tumor metastasis and wrote research reports. 
-- Also did case studies to identify the genetic defect causing rare disease.
+\begingroup
+\setlength{\parindent}{-0.5in}
+\setlength{\leftskip}{0.5in}
+
+::: {#refs_inprogress}
 :::
 
-
-Teaching Experience {data-icon=chalkboard-teacher}
---------------------------------------------------------------------------------
-
-### Introduction to R Language for Beginners.
-
-Instructor of R and Data Mining Training Courses at SupStat Inc.
-
-Beijing, China
-
-2014
-
-### Computational Biology and Bioinformatics.
-
-Teaching assistant of GBS CB2-201 courses at UAB
-
-AL, USA
-
-2016 - 2017
+\endgroup
 
 
-Selected Publications and Posters {data-icon=file}
---------------------------------------------------------------------------------
+# Book Chapters
 
-### Genetic and epigenetic signals are found predictive to the distribution of intra-individual divergence of alternative splicing.
+\begingroup
+\setlength{\parindent}{-0.5in}
+\setlength{\leftskip}{0.5in}
 
-Poster for 2013 International Conference of Genomics
+::: {#refs_books}
+:::
 
-Qingdao, China
+\endgroup
 
-2014
 
-**Yu L**, Chen B, Zhang Z.
+# Selected Presentations
 
-### ESCRT-0 complex modulates Rbf mutant cell survival by regulating Rhomboid endosomal trafficking and EGFR signaling.
+\begingroup
+\setlength{\parindent}{-0.5in}
+\setlength{\leftskip}{0.5in}
 
-J Cell Sci. 2016 May 15;129(10):2075-84.
+::: {#refs_presentations}
+:::
 
-N/A
+\endgroup
 
-2016 
 
-Sheng Z, **Yu L**, Zhang T, Pei X, Li X, Zhang Z and Du W. 
+# Teaching Experience
+
+## Primary Instructor
+
+```{r}
+tribble(
+  ~ Year,
+  ~ Name,
+  ~ Duty,
+  '09/2017 - 12/2017',
+  "EDUC 391: Educational Psychology and Human Development",
+  "Course design; weekly lectures; grading assignments and exams; office hours"
+) %>%
+  detailed_entries(where = Year,
+                   with = Name,
+                   what = Duty) 
+```
+
+
+## Graduate Student Instructor
+
+```{r}
+tribble(
+  ~ Year,
+  ~ Name,
+  ~ Duty,
+  '01/2020 - 05/2020',
+  "PSYCH 457 : Research in Educational and Cross-Cultural Settings",
+  "Grading student essays; office hours; supervising student research projects",
+  '01/2019 - 04/2019',
+  "PSYCH 457 : Research in Educational and Cross-Cultural Settings",
+  "Grading student essays; office hours; supervising student research projects",
+  '01/2018 - 04/2018',
+  "PSYCH 111: Introduction to Psychology",
+  "Three review sessions per week; grading assignments and exams; office hours",
+  '01/2017 - 04/2017',
+  "PSYCH 457 : Research in Educational and Cross-Cultural Settings",
+  "Grading student essays; office hours; supervising student research projects",
+  '09/2016 - 12/2016',
+  "PSYCH 240: Intro to Cognitive Psychology",
+  "Three review sessions per week; grading assignments and exams; office hours",
+  '01/2016 - 04/2016',
+  "PSYCH 457 : Research in Educational and Cross-Cultural Settings",
+  "Grading student essays; office hours; supervising student research projects"
+) %>%
+  detailed_entries(where = Year,
+                   with = Name,
+                   what = Duty) 
+```
+
+## Program Assistant
+
+```{r}
+tribble(
+  ~ Year,
+  ~ Name,
+  ~ Duty,
+  '05/2019',
+  "Global Course Connection: Beijing Normal University",
+  "Supervising joint research projects between US and Chinese students; organizing student activities",
+  '05/2017',
+  'Global Course Connection: Beijing Normal University',
+  "Supervising joint research projects between US and Chinese students; organizing student activities",
+  '05/2016',
+  "Global Course Connection: Beijing Normal University",
+  "Supervising joint research projects between US and Chinese students; organizing student activities",
+  '05/2015',
+  "Global Course Connections: Beijing Normal University",
+  "Supervising joint research projects between US and Chinese students; organizing student activities"
+) %>%
+  detailed_entries(where = Year,
+                   with = Name,
+                   what = Duty) 
+```
+
+# Professional Service
+
+## Ad Hoc Reviewer
+
+* Journal of Experimental Psychology: General
+* Memory & Cognition
+* NeuroImage
+* Visual Cognition
+
+# References
+
+```{r}
+tribble(
+  ~ Name,
+  ~ Title,
+  ~ Contact,
+  'John Jonides, Ph.D.',
+  "Edward E. Smith Professor of Psychology and Neuroscience; Co-Director, functional MRI Center, University of Michigan; Senior Editor, Psychological Science",
+  "jjonides@umich.edu; 734-764-0192",
+  'Kevin F. Miller, Ph.D.',
+  "Professor of Psychology and Education,  University of Michigan",
+  "kevinmil@umich.edu; 734-615-1800",
+  'Priti Shah, Ph.D.',
+  "Professor of Cognition & Cognitive Neuroscience and Educational Psychology, University of Michigan",
+  "priti@umich.edu; 734-615-3745",
+  'Kai S. Cortina, Ph.D.',
+  "Professor of Psychology, University of Michigan",
+  "schnabel@umich.edu; 734-615-3809"
+) %>%
+  detailed_entries(where = Contact,
+                   with = Name,
+                   what = Title) 
+```
