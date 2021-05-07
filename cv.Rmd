@@ -7,7 +7,7 @@ email: "julie.white@nih.gov"
 aboutme: "Trying to make things work"
 github: juliedwhite
 linkedin: julie-d-white
-headcolor: 016C59
+headcolor: 02818A
 date: "`r format(Sys.time(), '%B %Y')`"
 output: 
   vitae::awesomecv:
