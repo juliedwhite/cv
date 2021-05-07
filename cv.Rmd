@@ -5,10 +5,9 @@ position: "IRTA Postdoctoral Research Fellow"
 address: "National Institute of Environmental Health Sciences"
 email: "julie.white@nih.gov"
 aboutme: "Trying to make things work"
-orcid: 0000-0002-2235-4817
 github: juliedwhite
-linkedin: julie-white-05888b133
-headcolor: 414141 # use black color
+linkedin: julie-d-white
+headcolor: 016C59
 date: "`r format(Sys.time(), '%B %Y')`"
 output: 
   vitae::awesomecv:
@@ -39,11 +38,11 @@ library(vitae);library(tibble); library(glue)
 # Education
 
 ```{r}
-tribble(~ Degree, ~ Start, ~ End, ~ Institution, 
-        "B.S. in Genetics", "2010", "2014", "Clemson University", 
-        "M.A. in Anthropology", "2014", "2016", "Penn State University", 
-        "Ph.D. in Anthropology", "2016", "2019", "Penn State University", ) %>%
-  detailed_entries(with = Degree, where = glue("{Start}-{End}"), what = Institution)
+tribble(~ Degree, ~ Years, ~ Institution, 
+        "B.S. in Genetics", "2010-2014", "Clemson University", 
+        "M.A. in Anthropology", "2014-2016", "Penn State University", 
+        "Ph.D. in Anthropology", "2016-2019", "Penn State University") %>%
+  detailed_entries(with = Degree, what = Institution, where = Years)
 ```
 
 # History
@@ -102,7 +101,7 @@ tribble(~ Title, ~ When, ~ Institution,
 
 ```{r}
 tribble(~Year, ~Name,
-        "2019", "National Science Foundation DDRIG (#31,535; awarded but declined)",
+        "2019", "National Science Foundation DDRIG ($31,535; awarded but declined)",
         "2017-2018", "PSU Hill Fellowship Award ($1500 and $1200)",
         "2017", "UW Summer Institutes in Statistical Genetics Travel Award ($1800)",
         "2016-2018", "PSU RGSO Conference Travel Award ($400 each year)",
