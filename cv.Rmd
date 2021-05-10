@@ -60,6 +60,21 @@ tribble(~ Title, ~ When, ~ Institution,
 ```
 
 # Computational Languages
+```{r}
+tribble(~ Language, ~ Mastery, 
+        "R", "Advanced",
+        "Bash", "Intermediate",
+        "Python", "Intermediate",
+        "Bioconductor", "Novice",
+        "MATLAB", "Novice",
+        "LaTeX", "Intermediate",
+        "plink", "Advanced",
+        "vcf- and bcftools", "Advanced",
+        "shapeit", "Advanced",
+        "Impute", "Advanced") %>%
+  detailed_entries(with = Language, when = Mastery)
+```
+
 
 # Publications
 
