@@ -121,20 +121,27 @@ tribble(~Year, ~Name,
         "2017", "UW Summer Institutes in Statistical Genetics Travel Award ($1800)",
         "2016-2018", "PSU RGSO Conference Travel Award ($400 each year)",
         "2015", "PSU Center for Human Evolution and Diversity Research Grant ($7303") %>% 
-  detailed_entries(where = Year, what = Name) 
+  detailed_entries(when = Year, what = Name) 
 ```
 
 # Invited Presentations
 
-\begingroup
-\setlength{\parindent}{-0.5in}
-\setlength{\leftskip}{0.5in}
-
-::: {}
-:::
-
-\endgroup
-
+```{r}
+tribble(~Year, ~Institute, ~Title, ~Location,
+        "2019", 
+        "Center for Craniofacial and Dental Genetics; Advances in Human Facial Genetics Meeting",
+        "203 GWAS signals reveal combinatorial effects on the genetic architecture of facial shape",
+        "Pittsburgh, PA, USA",
+        "2018", 
+        "KU Leuven; Medical Imaging Center",
+        "Detecting asymmetry in 3D facial scans",
+        "Leuven, Belgium",
+        "2016",
+        "University of Pretoria; Genetics department",
+        "Exploring genotype to phenotype connections",
+        "Pretoria, South Africa") %>% 
+  detailed_entries(when = Year, what = Title, with = Institute, where = Location) 
+```
 # Conference Participation
 
 \begingroup
